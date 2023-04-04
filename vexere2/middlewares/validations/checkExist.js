@@ -28,7 +28,6 @@ const checkExist = (Model) => async (req, res, next) => {
     }
 };
 
-
 module.exports = {
     checkExist,//54
 };

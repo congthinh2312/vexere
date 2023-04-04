@@ -19,7 +19,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Trip.init({
     startTime: DataTypes.DATE,
-    price: DataTypes.FLOAT
+    price: {
+      type: DataTypes.FLOAT,
+      validate: {
+        notEmpty: true,
+        len: [2, 20]
+      },
+    }
   }, {
     sequelize,
     modelName: 'Trip',

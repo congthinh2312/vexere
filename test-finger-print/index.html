@@ -4,11 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+    <title>Login</title>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./index.js"></script>
+    <form action="">
+        <div class="container">
+            <h1>Form Login</h1>
+            <div class="form-control ">
+                <input id="username" type="text" placeholder="Username">
+                <small></small>
+                <span></span>
+            </div>
+            
+            <div class="form-control ">
+                <input id="email" type="email" placeholder="Email">
+                <small></small>
+                <span></span>
+            </div>
+
+            <div class="form-control ">
+                <input id="password" type="password" placeholder="Password">
+                <small></small>
+                <span></span>
+            </div>
+
+            <div class="form-control ">
+                <input id="confirm-password" type="password" placeholder="Confirm Password">
+                <small></small>
+                <span></span>
+            </div>
+
+            <button type="submit" class="btn-submit">Login</button>
+
+            <div class="help">
+                Not a member? <a href="#">Signup</a>
+            </div>
+        </div>
+    </form>
+    <script src="./main.js"></script>
 </body>
 </html>

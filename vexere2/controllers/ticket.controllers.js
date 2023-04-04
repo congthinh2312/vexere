@@ -10,6 +10,21 @@ const createTicket = async (req, res) => {
     }
 };
 
+const deleteTicket = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const deleteTicket = await Ticket.destroy({
+            where: {
+                id,
+            },
+        });
+        res.status(200).send(deleteTicket);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
 module.exports = {
     createTicket,
+    deleteTicket,
 };

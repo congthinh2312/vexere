@@ -1,7 +1,7 @@
-const {User, sequelize} = require("../models");
+const {User, sequelize, Ticket} = require("../models");
 const bcrypt = require("bcryptjs");// mã hóa password
 const jwt = require("jsonwebtoken");
-const gravatarUrl = require("gravatar-url");
+const gravatarUrl = require("gravatar-url");// tạo avatar mặc định
 
 const register = async (req, res) => {
     const {name, email, password, numberPhone} = req.body;
@@ -66,9 +66,31 @@ const getAllTrip = async (req, res) => {
     }
 };
 
+const getDetailTrip = async (req, res) => {
+    const {id} = req.params;
+    const detailTrip = await Ticket.findOne({
+        where: {
+            id,
+        },
+    });
+    if (detailTrip) {
+        const [results] = await sequelize.query(
+            `select users.name as userName, fromSta.name as fromStation, toSta.name as toStation from users
+            inner join tickets on users.id = tickets.user_id
+            inner join trips on trips.id = tickets.trip_id
+            inner join stations as fromSta on fromSta.id = trips.fromStation
+            inner join stations as toSta on toSta.id = trips.toSta`
+        );
+        res.send(results);
+    } else {
+        res.send(`Không tìm thấy ${id}`);
+    }
+};
+
 module.exports = {
     register,
     login,
     uploadAvatar,
     getAllTrip,
+    getDetailTrip,
 };

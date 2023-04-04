@@ -7,7 +7,6 @@ const authorize = (arrType) => (req, res, next) => {
         res.status(403).send("Bạn đã đăng nhập mà không có quyền");
     }
 };
-
 module.exports = {
-    authorize
+    authorize,
 };

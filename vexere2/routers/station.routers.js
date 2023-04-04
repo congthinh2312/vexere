@@ -8,7 +8,7 @@ const stationRouter = express.Router();//20
 
 stationRouter.post("/", authenticate, authorize(["ADMIN", "SUPER_ADMIN"]), createStation);//22
 stationRouter.get("/", getAllStation);//34
-stationRouter.get("/:id", getDetailStation);//37
+stationRouter.get("/:id", checkExist(Station), getDetailStation);//37
 stationRouter.put("/:id", checkExist(Station), updateStation);//43  //57 checkExist(Station)
 stationRouter.delete("/:id", authenticate, checkExist(Station), deleteStation);//48  //58 checkExist(Station)
 
